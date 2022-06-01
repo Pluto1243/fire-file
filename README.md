@@ -2,4 +2,4 @@
 # fire-firle
 阅后即焚网盘
 
-### Nginx + Redis
+### Nginx + Redis1
