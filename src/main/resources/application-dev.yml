@@ -1,5 +1,5 @@
 server:
-  port: 9999
+  port: 20810
 
 spring:
   datasource:
@@ -7,6 +7,13 @@ spring:
     url: "jdbc:mysql://162.14.115.198:3306/admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false"
     username: "root"
     password: "H2QB587mRW*Em3na"
+
+rocketmq:
+  name-server: http://152.136.215.195:9876
+  producer:
+    group: testGroup
+
+
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
 logging:

@@ -2,15 +2,13 @@ package cn.raccoon.team.boot.controller;
 
 import cn.raccoon.team.boot.exception.response.R;
 import cn.raccoon.team.boot.service.IUserService;
+import cn.raccoon.team.boot.service.RocketService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author Qian
@@ -22,6 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private RocketService rocketService;
 
     @PostMapping("/userLogin")
     @ApiImplicitParams({
@@ -40,4 +41,12 @@ public class UserController {
     public R changePassword(@RequestParam("password") String password){
         return R.ok(userService.changePassword(password));
     }
+
+    @GetMapping("/sendMq")
+    public R sendMq(@RequestParam("topicName")String topicName,
+                    @RequestParam("info")String info) {
+        rocketService.sendInfo(topicName, info);
+        return R.ok();
+    }
+
 }
