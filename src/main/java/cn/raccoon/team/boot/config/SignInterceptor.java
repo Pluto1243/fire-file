@@ -36,18 +36,18 @@ public class SignInterceptor implements HandlerInterceptor {
     @ResponseBody
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        final String token = request.getHeader("token");
-        if (token == null){
-            throw new CommonException(EmError.PLEASE_TO_LOGIN);
-        }
-        final String account = jwtTokenUtil.getUsernameFromToken(token);
-        if (account == null){
-            throw new CommonException(EmError.LOGIN_EXPIRED);
-        }
-        final User user = userService.getUserByAccount(account);
-        if (user == null){
-            throw new CommonException(EmError.LOGIN_EXPIRED);
-        }
+//        final String token = request.getHeader("token");
+//        if (token == null){
+//            throw new CommonException(EmError.PLEASE_TO_LOGIN);
+//        }
+//        final String account = jwtTokenUtil.getUsernameFromToken(token);
+//        if (account == null){
+//            throw new CommonException(EmError.LOGIN_EXPIRED);
+//        }
+//        final User user = userService.getUserByAccount(account);
+//        if (user == null){
+//            throw new CommonException(EmError.LOGIN_EXPIRED);
+//        }
         return true;
     }
 

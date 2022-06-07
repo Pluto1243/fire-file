@@ -2,7 +2,7 @@ package cn.raccoon.team.boot.controller;
 
 import cn.raccoon.team.boot.exception.response.R;
 import cn.raccoon.team.boot.service.IUserService;
-import cn.raccoon.team.boot.service.RocketService;
+import cn.raccoon.team.boot.service.IRocketService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -22,7 +22,7 @@ public class UserController {
     private IUserService userService;
 
     @Autowired
-    private RocketService rocketService;
+    private IRocketService rocketService;
 
     @PostMapping("/userLogin")
     @ApiImplicitParams({
@@ -44,8 +44,9 @@ public class UserController {
 
     @GetMapping("/sendMq")
     public R sendMq(@RequestParam("topicName")String topicName,
-                    @RequestParam("info")String info) {
-        rocketService.sendInfo(topicName, info);
+                    @RequestParam("info")String info,
+                    @RequestParam("delayLevel")Integer delayLevel) {
+        rocketService.sendInfo(topicName, info, delayLevel);
         return R.ok();
     }
 

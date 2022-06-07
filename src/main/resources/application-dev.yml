@@ -7,14 +7,38 @@ spring:
     url: "jdbc:mysql://162.14.115.198:3306/admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false"
     username: "root"
     password: "H2QB587mRW*Em3na"
+  # redis
+  redis:
+    host: 152.136.215.195
+    port: 6379
+    password: Qzj!1234
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0ms
 
 rocketmq:
   name-server: http://152.136.215.195:9876
   producer:
     group: testGroup
-
+    # 消息最大长度 默认1024*4(4M)
+    maxMessageSize: 4096
+    # 发送消息超时时间,默认3000
+    sendMsgTimeout: 3000
+    # 发送消息失败重试次数，默认2
+    retryTimesWhenSendFailed: 2
+  time-level: 1m 5m 10m 20m 30m 45m 1h 2h 3h 6h 12h 1d 2d 3d 4d 5d 6d 7d
 
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
 logging:
   config: classpath:logback-dev.xml
+
+# 文件输入路径
+in-path: /root/fireFile/in-path
+# 文件输出路径
+out-path: /root/fireFile/out-path
