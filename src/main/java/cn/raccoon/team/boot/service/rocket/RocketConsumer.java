@@ -1,9 +1,5 @@
 package cn.raccoon.team.boot.service.rocket;
 
-import cn.raccoon.team.boot.entity.FireFile;
-import cn.raccoon.team.boot.entity.User;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
