@@ -1,14 +1,16 @@
 package cn.raccoon.team.boot.controller;
 
+import cn.raccoon.team.boot.entity.FireFile;
 import cn.raccoon.team.boot.exception.response.R;
 import cn.raccoon.team.boot.service.IRocketService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * 阅后即焚控制类
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "阅后即焚")
 @RestController
 @RequestMapping("fire")
+@Validated
 public class FireController {
 
     @Autowired
@@ -29,5 +32,12 @@ public class FireController {
     @GetMapping("/listTimeLevel")
     public R listTimeLevel() {
         return R.ok(rocketService.listTimeLevel());
+    }
+
+    @ApiOperation("阅后即焚")
+    @ApiOperationSupport(order = 101)
+    @PostMapping("/sendFireFile")
+    public R sendFireFile(@Valid @RequestBody FireFile fireFile) {
+        return R.ok();
     }
 }

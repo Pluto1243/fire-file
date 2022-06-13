@@ -4,6 +4,7 @@ import cn.raccoon.team.boot.exception.CommonException;
 import cn.raccoon.team.boot.exception.EmError;
 import cn.raccoon.team.boot.exception.response.R;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +30,9 @@ public class GlobalExceptionHandler {
       responseData.put("errCode", commonException.getErrCode());
       responseData.put("errMsg", commonException.getErrMsg());
 
+    } else if (ex instanceof MethodArgumentNotValidException) {
+        responseData.put("errCode", "-1");
+        responseData.put("errMsg", ((MethodArgumentNotValidException)ex).getBindingResult().getFieldErrors().get(0).getDefaultMessage());
     } else {
       responseData.put("errCode", EmError.UNKNOWN_ERROR.getErrCode());
       responseData.put("errMsg", EmError.UNKNOWN_ERROR.getErrMsg());
