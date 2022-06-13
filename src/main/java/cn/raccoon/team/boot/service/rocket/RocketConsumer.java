@@ -24,6 +24,7 @@ public class RocketConsumer implements RocketMQListener<String> {
         // 获取到key下的文件路径并且删除该文件
         Object file = redisTemplate.opsForValue().get(key);
         if (file != null) {
+            redisTemplate.persist(key);
             log.info("销毁文件: 文件为： {}", file);
         }
     }

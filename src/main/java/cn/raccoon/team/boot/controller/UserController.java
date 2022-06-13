@@ -46,7 +46,7 @@ public class UserController {
     public R sendMq(@RequestParam("topicName")String topicName,
                     @RequestParam("info")String info,
                     @RequestParam("delayLevel")Integer delayLevel) {
-        rocketService.sendInfo(topicName, info, delayLevel);
+        rocketService.sendFire(topicName, info, delayLevel);
         return R.ok();
     }
 

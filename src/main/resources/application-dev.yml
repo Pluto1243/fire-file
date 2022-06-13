@@ -42,3 +42,5 @@ logging:
 in-path: /root/fireFile/in-path
 # 文件输出路径
 out-path: /root/fireFile/out-path
+# 提取前缀
+prefix: 152.136.215.195:20810/s/

@@ -2,6 +2,7 @@ package cn.raccoon.team.boot.controller;
 
 import cn.raccoon.team.boot.entity.FireFile;
 import cn.raccoon.team.boot.exception.response.R;
+import cn.raccoon.team.boot.service.IFireFileService;
 import cn.raccoon.team.boot.service.IRocketService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.Api;
@@ -27,6 +28,9 @@ public class FireController {
     @Autowired
     private IRocketService rocketService;
 
+    @Autowired
+    private IFireFileService fireFileService;
+
     @ApiOperation("时间精度")
     @ApiOperationSupport(order = 100)
     @GetMapping("/listTimeLevel")
@@ -37,7 +41,7 @@ public class FireController {
     @ApiOperation("阅后即焚")
     @ApiOperationSupport(order = 101)
     @PostMapping("/sendFireFile")
-    public R sendFireFile(@Valid @RequestBody FireFile fireFile) {
-        return R.ok();
+    public R sendFireFile(@Valid FireFile fireFile) {
+        return R.ok(fireFileService.sendFireFile(fireFile));
     }
 }
