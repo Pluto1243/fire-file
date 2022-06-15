@@ -8,7 +8,7 @@ public interface IFireFileService {
      * @description 发送阅后即焚
      *
      * @author wangjie
-     * @date 17:41 2022年06月13日 
+     * @date 14:14 2022年06月15日
      * @param fireFile
      * @return java.lang.String 
      */

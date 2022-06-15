@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -48,4 +47,6 @@ public class FireFile implements Serializable {
 
     @ApiModelProperty("提取码")
     private String code;
+
+    // TODO 可以加一个下载次数 每次下载 -1
 }

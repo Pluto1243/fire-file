@@ -17,7 +17,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <spring-security.version>5.4.5</spring-security.version>
     <fastjson.version>1.2.62</fastjson.version>
     <jwt.version>0.7.0</jwt.version>
     <hutool.version>5.6.5</hutool.version>
@@ -81,11 +80,6 @@
       <groupId>cn.hutool</groupId>
       <artifactId>hutool-all</artifactId>
       <version>${hutool.version}</version>
-    </dependency>
-    <!--保留所需功能，去除权限验证-->
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-core</artifactId>
     </dependency>
     <!--fastjson-->
     <dependency>
