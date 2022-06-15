@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 阅后即焚的文件信息
@@ -47,6 +48,9 @@ public class FireFile implements Serializable {
 
     @ApiModelProperty("提取码")
     private String code;
+
+    @ApiModelProperty("过期时间")
+    private Date expireDate;
 
     // TODO 可以加一个下载次数 每次下载 -1
 }

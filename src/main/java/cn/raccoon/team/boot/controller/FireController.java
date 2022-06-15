@@ -44,4 +44,11 @@ public class FireController {
     public R sendFireFile(@Valid FireFile fireFile) {
         return R.ok(fireFileService.sendFireFile(fireFile));
     }
+
+    @ApiOperation("提取文件")
+    @ApiOperationSupport(order = 102)
+    @GetMapping("/extractFile")
+    public R extractFile(@RequestParam("key") String key, @RequestParam("code") String code) {
+
+    }
 }

@@ -14,4 +14,24 @@ public interface IFireFileService {
      */
     String sendFireFile(FireFile fireFile);
 
+    /**
+     * @description 验证链接是否有效
+     *
+     * @author wangjie
+     * @date 18:30 2022年06月15日
+     * @param key
+     * @return cn.raccoon.team.boot.entity.FireFile
+     */
+    FireFile getFileInfoByKey(String key);
+
+    /**
+     * @description 提取文件
+     *
+     * @author wangjie
+     * @date 18:31 2022年06月15日
+     * @param key
+     * @param code
+     * @return
+     */
+    void extractFile(String key, String code);
 }
