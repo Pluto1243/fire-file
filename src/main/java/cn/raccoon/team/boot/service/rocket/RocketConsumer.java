@@ -12,6 +12,12 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 
+/**
+ * 负责消费延时消息，删除文件和key
+ *
+ * @author wangjie
+ * @date 11:34 2022年06月16日
+ **/
 @Slf4j
 @Service
 @RocketMQMessageListener(topic = "fire-topic", consumerGroup = "fireGroup")
@@ -26,6 +32,7 @@ public class RocketConsumer implements RocketMQListener<String> {
     public void onMessage(String key) {
         // 消费延迟删除消息
         // 获取到key下的文件路径并且删除该文件
+        log.info("延时消息收到key："+ key);
         Object json = redisTemplate.opsForValue().get(key);
         if (json != null) {
             // 获得阅后即焚文件

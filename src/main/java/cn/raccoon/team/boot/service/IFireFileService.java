@@ -1,6 +1,9 @@
 package cn.raccoon.team.boot.service;
 
 import cn.raccoon.team.boot.entity.FireFile;
+import cn.raccoon.team.boot.entity.KeyCode;
+
+import javax.servlet.http.HttpServletResponse;
 
 public interface IFireFileService {
 
@@ -8,11 +11,11 @@ public interface IFireFileService {
      * @description 发送阅后即焚
      *
      * @author wangjie
-     * @date 14:14 2022年06月15日
+     * @date 11:34 2022年06月16日
      * @param fireFile
-     * @return java.lang.String 
+     * @return cn.raccoon.team.boot.entity.KeyCode
      */
-    String sendFireFile(FireFile fireFile);
+    KeyCode sendFireFile(FireFile fireFile);
 
     /**
      * @description 验证链接是否有效
@@ -31,7 +34,8 @@ public interface IFireFileService {
      * @date 18:31 2022年06月15日
      * @param key
      * @param code
+     * @param response
      * @return
      */
-    void extractFile(String key, String code);
+    void extractFile(String key, String code, HttpServletResponse response);
 }

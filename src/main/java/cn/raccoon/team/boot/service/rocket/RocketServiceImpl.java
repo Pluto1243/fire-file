@@ -24,7 +24,7 @@ public class RocketServiceImpl implements IRocketService {
     public void sendFire(String topicName, String key, Integer level) {
         // 发送同步延迟消息 0代表立即发送
         // 时间精度 [1m 5m 10m 20m 30m 45m 1h 2h 3h 6h 12h 1d 2d 3d 4d 5d 6d 7d]
-        log.info(key);
+        log.info("topicName: {}, key: {}, level: {}", topicName, key, level);
         rocketMQTemplate.syncSend(topicName, MessageBuilder.withPayload(key).build(), 3000, level + 1);
     }
 

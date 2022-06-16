@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -48,7 +49,7 @@ public class FireController {
     @ApiOperation("提取文件")
     @ApiOperationSupport(order = 102)
     @GetMapping("/extractFile")
-    public R extractFile(@RequestParam("key") String key, @RequestParam("code") String code) {
-
+    public void extractFile(@RequestParam("key") String key, @RequestParam("code") String code, HttpServletResponse response) {
+        fireFileService.extractFile(key, code, response);
     }
 }
