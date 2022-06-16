@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -42,9 +41,9 @@ public class FileController {
         String originalFilename = file.getOriginalFilename();
 
         try {
-            // 校验文件的内容，ImageIO读取文件内容
-            BufferedImage bufferedImage = ImageIO.read(file.getInputStream());
-            if (bufferedImage == null) {
+            // 校验文件的内容，读取文件内容
+            BufferedInputStream bis = new BufferedInputStream(file.getInputStream());
+            if (bis == null) {
                 throw new CommonException(EmError.FILE_EXIST);
             }
             //获取文件后缀名

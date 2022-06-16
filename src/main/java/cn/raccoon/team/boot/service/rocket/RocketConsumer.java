@@ -47,8 +47,8 @@ public class RocketConsumer implements RocketMQListener<String> {
                 runtime.exec(command);
                 log.info(command);
             }
-            // 删除key
-            redisTemplate.persist(json);
+            // key失效
+            redisTemplate.persist(key);
         }
     }
 }

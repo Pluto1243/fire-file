@@ -20,6 +20,10 @@ spring:
         min-idle: 0
     lettuce:
       shutdown-timeout: 0ms
+  servlet:
+    multipart:
+      # 文件上传最大为100MB
+      max-file-size: 100MB
 
 rocketmq:
   name-server: http://152.136.215.195:9876

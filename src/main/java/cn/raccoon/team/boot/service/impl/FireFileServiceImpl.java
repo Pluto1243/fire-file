@@ -104,13 +104,13 @@ public class FireFileServiceImpl implements IFireFileService {
             File realFile = new File(file.getPath());
             BufferedInputStream bis = null;
 
-            // 文件不存在
-            if (!realFile.exists()) {
-                throw new CommonException(EmError.URL_NOT_FOUNT);
-            }
             try {
                 outSos = new BufferedOutputStream(response.getOutputStream());
                 bis = new BufferedInputStream(new FileInputStream(file.getPath()));
+                // 文件不存在
+                if (!realFile.exists() || bis == null) {
+                    throw new CommonException(EmError.URL_NOT_FOUNT);
+                }
                 // 写入输出流
                 int len;
                 byte[] bytes = new byte[1024];
