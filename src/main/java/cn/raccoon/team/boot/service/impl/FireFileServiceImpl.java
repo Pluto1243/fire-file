@@ -97,7 +97,7 @@ public class FireFileServiceImpl implements IFireFileService {
             // 设置返回信息数据
             response.setContentType("text/plain;charset=utf-8");
             response.setCharacterEncoding("utf-8");
-            response.setHeader("content-disposition", "attachment;filename=" + file.getShowName());
+            response.setHeader("content-disposition", "attachment;filename=" + file.getShowName() + file.getFileName().substring(file.getFileName().lastIndexOf(".")));
 
             // 创建输出流
             BufferedOutputStream outSos = null;
