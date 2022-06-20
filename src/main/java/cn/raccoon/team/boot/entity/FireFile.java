@@ -40,7 +40,7 @@ public class FireFile implements Serializable {
     private Boolean expire;
 
     @ApiModelProperty("文件大小")
-    private Long fileSize;
+    private String fileSize;
 
     @ApiModelProperty("分享人名称")
     @NotEmpty

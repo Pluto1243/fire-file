@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,9 @@ public class RocketConsumer implements RocketMQListener<String> {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Value("${in-path}")
+    private String PATH;
+
 
     @SneakyThrows
     @Override
@@ -40,7 +44,9 @@ public class RocketConsumer implements RocketMQListener<String> {
             // 判断文件是否存在
             File file = new File(fireFile.getPath());
             log.info(file.getPath());
-            if (file.exists()) {
+            // 需要判断路径是否正确，并且是在输入路径下面，增加安全性
+            // 为了防止用户传入自定义路径, 删除系统文件
+            if (file.exists() && file.getPath().contains(PATH)) {
                 // 文件存在  删除文件
                 Runtime runtime = Runtime.getRuntime();
                 String command = "rm -rf " + file.getPath();

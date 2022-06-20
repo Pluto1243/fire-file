@@ -42,7 +42,7 @@ public class FireController {
     @ApiOperation("阅后即焚")
     @ApiOperationSupport(order = 101)
     @PostMapping("/sendFireFile")
-    public R sendFireFile(@Valid FireFile fireFile) {
+    public R sendFireFile(@Valid @RequestBody FireFile fireFile) {
         return R.ok(fireFileService.sendFireFile(fireFile));
     }
 
