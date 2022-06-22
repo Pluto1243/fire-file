@@ -61,6 +61,7 @@ public class FireFileServiceImpl implements IFireFileService {
             redisTemplate.opsForValue().set(key, JSONObject.toJSONString(fireFile), timeMap.get(fireFile.getExpireLevel()) + 5, TimeUnit.SECONDS);
         } else {
             // 30天后过期
+            fireFile.setExpireDate(new Date(System.currentTimeMillis() + 60 * 60 * 24 * 30 * 1000));
             redisTemplate.opsForValue().set(key, JSONObject.toJSONString(fireFile), 60 * 60 * 24 * 30, TimeUnit.SECONDS);
         }
         // 返回链接和提取码
