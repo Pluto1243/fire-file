@@ -35,6 +35,10 @@ public class FireFileServiceImpl implements IFireFileService {
 
     @Override
     public KeyCode sendFireFile(FireFile fireFile) {
+        // 获取文件后缀名
+        String suffixName = fireFile.getFileName().substring(fireFile.getFileName().lastIndexOf("."));
+        // 拼接到文件展示名上
+        fireFile.setShowName(fireFile.getShowName() + suffixName);
         // 生成随机链接
         String key = RandomUtils.generateByRandom(8);
         fireFile.setKey(key);
@@ -61,7 +65,7 @@ public class FireFileServiceImpl implements IFireFileService {
         }
         // 返回链接和提取码
         KeyCode keyCode = new KeyCode();
-        keyCode.setKey(prefix + key);
+        keyCode.setKey(key);
         keyCode.setCode(code);
         return keyCode;
     }
