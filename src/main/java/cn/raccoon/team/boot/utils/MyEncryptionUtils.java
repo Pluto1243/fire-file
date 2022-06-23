@@ -32,5 +32,4 @@ public class MyEncryptionUtils {
 
     return new StringBuilder(Base64.getEncoder().encodeToString(new String(sb.toString()).getBytes())).reverse().toString();
   }
-
 }
