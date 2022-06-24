@@ -36,13 +36,14 @@ public class FileController {
      */
     @PostMapping("/uploadFile")
     @ApiOperation(value = "上传文件")
-    public R uploadFile(@RequestParam("file") MultipartFile file) {
+    public R uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         // 获取文件名称
         String originalFilename = file.getOriginalFilename();
 
+        BufferedInputStream bis = null;
         try {
             // 校验文件的内容，读取文件内容
-            BufferedInputStream bis = new BufferedInputStream(file.getInputStream());
+            bis = new BufferedInputStream(file.getInputStream());
             if (bis == null) {
                 throw new CommonException(EmError.FILE_EXIST);
             }
@@ -70,6 +71,8 @@ public class FileController {
 
         } catch (IOException e) {
             throw new CommonException(EmError.UNKNOWN_ERROR);
+        } finally {
+            bis.close();
         }
     }
 }
