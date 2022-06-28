@@ -19,15 +19,9 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <fastjson.version>1.2.62</fastjson.version>
     <jwt.version>0.7.0</jwt.version>
-    <hutool.version>5.6.5</hutool.version>
     <spring.web.version>5.3.10</spring.web.version>
     <knife4j.version>3.0.2</knife4j.version>
     <fastjson.version>1.2.62</fastjson.version>
-    <pagehelper.version>1.3.0</pagehelper.version>
-    <guava-cache.version>23.0</guava-cache.version>
-    <bind.version>2.3.1</bind.version>
-    <activation.version>1.1.1</activation.version>
-    <jaxb.version>2.3.3</jaxb.version>
     <mybatis-plus.version>3.5.1</mybatis-plus.version>
     <hibernate-validator.version>6.2.0.FINAL</hibernate-validator.version>
     <rocketMq.version>2.1.1</rocketMq.version>
@@ -39,20 +33,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -70,17 +53,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!--hutool工具包-->
-    <dependency>
-      <groupId>cn.hutool</groupId>
-      <artifactId>hutool-all</artifactId>
-      <version>${hutool.version}</version>
-    </dependency>
     <!--fastjson-->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -93,18 +65,6 @@
       <artifactId>knife4j-spring-boot-starter</artifactId>
       <version>${knife4j.version}</version>
     </dependency>
-    <!--分页插件-->
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper-spring-boot-starter</artifactId>
-      <version>${pagehelper.version}</version>
-    </dependency>
-    <!-- 本地缓存 -->
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>${guava-cache.version}</version>
-    </dependency>
     <!--JWT-->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
@@ -114,22 +74,6 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
-    </dependency>
-    <!--解决jdk11不在包含java EE的API的问题-->
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-      <version>${bind.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.activation</groupId>
-      <artifactId>activation</artifactId>
-      <version>${activation.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <version>${jaxb.version}</version>
     </dependency>
     <!--  mybatis-plus -->
     <dependency>
